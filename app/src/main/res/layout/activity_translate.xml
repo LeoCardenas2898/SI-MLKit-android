@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/background"
+        android:layout_height="match_parent"
+        tools:context=".ui.TranslateActivity">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/backImageView"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="20dp"
+            android:layout_gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="¿Qué podemos traducir?"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans"
+                    android:text="¿Qué deseas traducir?"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/inputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Escriba aquí"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    android:fontFamily="@font/open_sans"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/inputLangSpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@id/syncInputButton"
+            app:layout_constraintEnd_toStartOf="@id/buttonSwitchLang"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonSwitchLang"
+            style="@style/IconOnlyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text=""
+            app:backgroundTint="@color/colorAccent"
+            app:icon="@drawable/ic_compare"
+            app:layout_constraintBottom_toTopOf="@+id/downloadedModels"
+            app:layout_constraintEnd_toStartOf="@+id/outputLangSpinner"
+            app:layout_constraintStart_toEndOf="@+id/inputLangSpinner"
+            app:layout_constraintTop_toTopOf="@id/inputLangSpinner"/>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/outputLangSpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="10dp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@id/inputLangSpinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/buttonSwitchLang"
+            app:layout_constraintTop_toTopOf="@id/inputLangSpinner"/>
+
+        <ToggleButton
+            android:id="@+id/syncInputButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:textSize="11sp"
+            android:textColor="@color/colorAccent"
+            android:textOff="@string/download_model"
+            android:textOn="@string/delete_model"
+            android:fontFamily="@font/open_sans_bold"
+            app:layout_constraintBottom_toTopOf="@id/downloadedModels"
+            app:layout_constraintEnd_toEndOf="@+id/inputLangSpinner"
+            app:layout_constraintStart_toStartOf="@id/inputLangSpinner"
+            app:layout_constraintTop_toBottomOf="@id/inputLangSpinner"/>
+
+        <ToggleButton
+            android:id="@+id/syncOutputButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:textSize="11sp"
+            android:textColor="@color/colorAccent"
+            android:textOff="@string/download_model"
+            android:textOn="@string/delete_model"
+            android:fontFamily="@font/open_sans_bold"
+            app:layout_constraintBottom_toBottomOf="@id/syncInputButton"
+            app:layout_constraintEnd_toEndOf="@id/outputLangSpinner"
+            app:layout_constraintStart_toStartOf="@id/outputLangSpinner"
+            app:layout_constraintTop_toTopOf="@id/syncInputButton"/>
+
+        <TextView
+            android:id="@+id/downloadedModels"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:layout_marginBottom="8dp"
+            android:text="@string/downloaded_models_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/syncInputButton"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/outputCardView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="24dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/downloadedModels"
+            app:layout_constraintVertical_bias="0.0">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/outputTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/open_sans"
+                android:gravity="top"
+                android:hint="Aquí se visualizará el texto traducido"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorAccent"/>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
